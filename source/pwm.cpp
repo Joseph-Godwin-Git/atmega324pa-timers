@@ -38,10 +38,11 @@ PWM::PWM(Timer tr, Channel ch)
             registers.DDR = &DDRD;
             registers.PIN = (Channel::A == ch) ? PD5 : PD4;
             // Set to Fast PWM w/ Top 0xFF
-            TCCR1A &= ~(1<<WGM13);
-            TCCR1A |= (1<<WGM12);
-            TCCR1B &= ~(1<<WGM11);
-            TCCR1B |= (1<<WGM10);
+            
+            TCCR1A &= ~(1<<WGM11);
+            TCCR1A |= (1<<WGM10);
+            TCCR1B &= ~(1<<WGM13);
+            TCCR1B |= (1<<WGM12);
             break;
         }
         case Timer::Timer2:
